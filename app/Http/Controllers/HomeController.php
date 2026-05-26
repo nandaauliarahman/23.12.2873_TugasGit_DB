@@ -3,10 +3,16 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Partner;
+use App\Models\Category;
 
 class HomeController extends Controller
 {
-    function index(){
-        return view('welcome');
+    function index()
+    {
+        $partners   = Partner::all();
+        $categories = Category::all();
+
+        return view('welcome', compact('partners', 'categories'));
     }
 }

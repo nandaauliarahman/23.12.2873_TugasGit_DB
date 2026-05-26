@@ -67,4 +67,4 @@ class DatabaseSeeder extends Seeder
         // 4. Panggil PartnerSeeder
         $this->call(PartnerSeeder::class);
     }
-}s
+}

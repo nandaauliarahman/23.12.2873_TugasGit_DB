@@ -33,7 +33,7 @@
             <div
                 class="absolute -bottom-10 -right-10 w-64 h-64 bg-purple-400 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-2000">
             </div>
-            <img src="assets/concert.png" alt="Concert"
+            <img src="{{ asset('assets/concert.png') }}" alt="Concert">
                 class="rounded-[2rem] shadow-2xl relative z-10 w-full object-cover aspect-[4/5] object-center">
 
             <div class="absolute -bottom-6 -left-6 glass p-6 rounded-2xl shadow-xl z-20 border border-white">
@@ -153,6 +153,47 @@
                 </div>
             </div>
         </div>
+    </section>
+
+    {{-- Seksi Kategori --}}
+    <section class="max-w-7xl mx-auto px-6 py-16 border-t border-slate-100">
+        <div class="mb-10">
+            <h2 class="text-3xl font-extrabold mb-2">Kategori Event</h2>
+            <p class="text-slate-500 font-medium">Temukan event sesuai minatmu.</p>
+        </div>
+        @if($categories->count() > 0)
+            <div class="flex flex-wrap gap-3">
+                @foreach($categories as $category)
+                <span class="px-6 py-3 bg-indigo-50 text-indigo-700 rounded-2xl font-bold text-sm border border-indigo-100 hover:bg-indigo-100 transition cursor-pointer">
+                    {{ $category->name }}
+                </span>
+                @endforeach
+            </div>
+        @else
+            <p class="text-slate-400 italic">Belum ada kategori tersedia.</p>
+        @endif
+    </section>
+
+    {{-- Seksi Partner --}}
+    <section class="max-w-7xl mx-auto px-6 py-16 border-t border-slate-100">
+        <div class="mb-10">
+            <h2 class="text-3xl font-extrabold mb-2">Partner Kami</h2>
+            <p class="text-slate-500 font-medium">Didukung oleh perusahaan dan institusi terkemuka.</p>
+        </div>
+        @if($partners->count() > 0)
+            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6">
+                @foreach($partners as $partner)
+                <div class="flex flex-col items-center gap-3 p-6 bg-white rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition group">
+                    <img src="{{ $partner->logo_url }}"
+                        alt="{{ $partner->name }}"
+                        class="w-16 h-16 object-contain rounded-xl group-hover:scale-110 transition-transform duration-300">
+                    <p class="text-xs font-bold text-slate-600 text-center">{{ $partner->name }}</p>
+                </div>
+                @endforeach
+            </div>
+        @else
+            <p class="text-slate-400 italic">Belum ada partner yang terdaftar.</p>
+        @endif
     </section>
 
 
